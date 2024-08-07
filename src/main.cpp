@@ -1960,6 +1960,14 @@ void change_tracking(byte);
 
 void stop_rotation();
 
+void check_preset_encoders();
+
+void service_park();
+
+void initiate_park();
+
+void deactivate_park();
+
 /* ------------------ let's start doing some stuff now that we got the formalities out of the way --------------------*/
 
 void setup() {
