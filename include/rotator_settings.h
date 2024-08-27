@@ -35,7 +35,7 @@ You can tweak these, but read the online documentation!
 #define ANALOG_EL_FULL_DOWN_EEPROM_INITIALIZE 1
 #define ANALOG_EL_FULL_UP_EEPROM_INITIALIZE 1023
 
-#define ANALOG_AZ_OVERLAP_DEGREES 540         // if overlap_led above is enabled, turn on overlap led line if azimuth is greater than this setting
+#define ANALOG_AZ_OVERLAP_DEGREES 360         // if overlap_led above is enabled, turn on overlap led line if azimuth is greater than this setting
                                               // you must use raw azimuth (if the azimuth on the rotator crosses over to 0 degrees, add 360
                                               // for example, on a Yaesu 450 degree rotator with a starting point of 180 degrees, and an overlap LED
                                               // turning on when going CW and crossing 180, ANALOG_AZ_OVERLAP_DEGREES should be set for 540 (180 + 360)
@@ -139,11 +139,11 @@ You can tweak these, but read the online documentation!
 
 #define LCD_HEADING_ROW 2
 #define LCD_HEADING_FIELD_SIZE 20
-#define LCD_AZ_ONLY_HEADING_ROW 1
+#define LCD_AZ_ONLY_HEADING_ROW 4
 #define LCD_AZ_ONLY_HEADING_FIELD_SIZE 20
 #define LCD_EL_ONLY_HEADING_ROW 2
 #define LCD_EL_ONLY_HEADING_FIELD_SIZE 20
-#define LCD_STATUS_ROW 1
+#define LCD_STATUS_ROW 3
 #define LCD_STATUS_FIELD_SIZE 20
 #define LCD_DIRECTION_ROW 1
 #define LCD_HHMMSS_CLOCK_ROW 1
