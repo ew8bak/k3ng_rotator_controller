@@ -10,16 +10,16 @@
 
 /* azimuth pins --------------------- (use just the azimuth pins for an azimuth-only rotator) */
 
-#define rotate_cw 0              // goes high to activate rotator R (CW) rotation - pin 1 on Yaesu connector
-#define rotate_ccw 1             // goes high to activate rotator L (CCW) rotation - pin 2 on Yaesu connector
+#define rotate_cw 13             // goes high to activate rotator R (CW) rotation - pin 1 on Yaesu connector
+#define rotate_ccw 7             // goes high to activate rotator L (CCW) rotation - pin 2 on Yaesu connector
 #define rotate_cw_ccw  0         // goes high for both CW and CCW rotation
 #define rotate_cw_pwm 0          // optional - PWM CW output - set to 0 to disable (must be PWM capable pin)
 #define rotate_ccw_pwm 0         // optional - PWM CCW output - set to 0 to disable (must be PWM capable pin)
 #define rotate_cw_ccw_pwm 6      // optional - PWM on CW and CCW output - set to 0 to disable (must be PWM capable pin)
 #define rotate_cw_freq 0         // optional - CW variable frequency output
 #define rotate_ccw_freq 0        // optional - CCW variable frequency output
-#define button_cw PIN_A2              // normally open button to ground for manual CW rotation (schematic pin: A2)
-#define button_ccw PIN_A3             // normally open button to ground for manual CCW rotation (schematic pin: A3)
+#define button_cw A2             // normally open button to ground for manual CW rotation (schematic pin: A2)
+#define button_ccw A3            // normally open button to ground for manual CCW rotation (schematic pin: A3)
 #define serial_led 0             // LED blinks when command is received on serial port (set to 0 to disable)
 #define rotator_analog_az A0     // reads analog azimuth voltage from rotator - pin 4 on Yaesu connector
 #define azimuth_speed_voltage 0  // optional - PWM output for speed control voltage feed into rotator (on continually unlike rotate_cw_pwm and rotate_ccw_pwm)
@@ -57,8 +57,8 @@
 
 // rotary encoder pins and options
 #ifdef FEATURE_AZ_PRESET_ENCODER 
-  #define az_rotary_preset_pin1 9                     // CW Encoder Pin
-  #define az_rotary_preset_pin2 8                     // CCW Encoder Pin
+  #define az_rotary_preset_pin1 8                      // CW Encoder Pin
+  #define az_rotary_preset_pin2 9                      // CCW Encoder Pin
 #endif //FEATURE_AZ_PRESET_ENCODER
 
 #ifdef FEATURE_EL_PRESET_ENCODER 
@@ -87,7 +87,7 @@
 #endif                                                // read http://arduino.cc/en/Reference/AttachInterrupt for details on hardware and interrupts
 
 #ifdef FEATURE_PARK
-  #define button_park 7
+  #define button_park 0
 #endif
 
 //classic 4 bit LCD pins

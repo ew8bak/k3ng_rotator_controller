@@ -1,7 +1,7 @@
 
 /* -------------------------- rotation settings ---------------------------------------*/
 
-#define AZIMUTH_STARTING_POINT_EEPROM_INITIALIZE 180      // the starting point in degrees of the azimuthal rotator - only used for initializing EEPROM the first time the code is run                                               
+#define AZIMUTH_STARTING_POINT_EEPROM_INITIALIZE 0      // the starting point in degrees of the azimuthal rotator - only used for initializing EEPROM the first time the code is run
 #define AZIMUTH_ROTATION_CAPABILITY_EEPROM_INITIALIZE 450 // the default rotation capability of the rotator in degrees - only used for initializing EEPROM the first time the code is run
 
 /* 
@@ -52,7 +52,7 @@ You can tweak these, but read the online documentation!
 //AZ
 #define AZ_SLOWSTART_DEFAULT 1            // 0 = off ; 1 = on
 #define AZ_SLOWDOWN_DEFAULT 1             // 0 = off ; 1 = on
-#define AZ_SLOW_START_UP_TIME 2000        // if slow start is enabled, the unit will ramp up speed for this many milliseconds
+#define AZ_SLOW_START_UP_TIME 500         // if slow start is enabled, the unit will ramp up speed for this many milliseconds
 #define AZ_SLOW_START_STARTING_PWM 1      // PWM starting value for slow start (must be < 256)
 #define AZ_SLOW_START_STEPS 20            // must be < 256
 
