@@ -7309,6 +7309,10 @@ void read_settings_from_eeprom(){
   unsigned int i;
   int ee = 0;
 
+  #if defined(ESP32)
+  EEPROM.begin(512);
+  #endif
+
 
   #if defined(FEATURE_SATELLITE_TRACKING)
     #if (!defined(ARDUINO_SAM_DUE) || (defined(ARDUINO_SAM_DUE) && defined(FEATURE_EEPROM_E24C1024))) && !defined(HARDWARE_GENERIC_STM32F103C)
@@ -7572,6 +7576,10 @@ void write_settings_to_eeprom(){
   for (i = 0; i < sizeof(configuration); i++) {
     EEPROM.write(ee++, *p++);
   }
+
+  #if defined(ESP32)
+  EEPROM.commit();
+  #endif
 
   configuration_dirty = 0;
 
