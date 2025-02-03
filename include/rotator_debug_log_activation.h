@@ -2,15 +2,15 @@
 
 
 
-#define DEFAULT_DEBUG_STATE 0 // 1 = activate debug mode at startup; this should be set to zero unless you're debugging something at startup
+#define DEFAULT_DEBUG_STATE 1 // 1 = activate debug mode at startup; this should be set to zero unless you're debugging something at startup
 
-#define DEBUG_DUMP  // normally compile with this activated unless you're really trying to save memory
+// #define DEBUG_DUMP  // normally compile with this activated unless you're really trying to save memory
 // #define DEBUG_LOOP
 // #define DEBUG_PROCESSES
 // #define DEBUG_BUTTONS
 // #define DEBUG_SERIAL
 // #define DEBUG_SERVICE_REQUEST_QUEUE
-// #define DEBUG_EEPROM
+#define DEBUG_EEPROM
 // #define DEBUG_AZ_SPEED_POT
 // #define DEBUG_AZ_PRESET_POT
 // #define DEBUG_PRESET_ENCODERS
@@ -29,7 +29,7 @@
 // #define DEBUG_POSITION_ROTARY_ENCODER
 // #define DEBUG_POSITION_ROTARY_ENCODER_USE_PJRC_LIBRARY
 // #define DEBUG_PROFILE_LOOP_TIME
-// #define DEBUG_POSITION_PULSE_INPUT
+#define DEBUG_POSITION_PULSE_INPUT
 // #define DEBUG_ACCEL
 // #define DEBUG_SVC_REMOTE_COMM_INCOMING_BUFFER
 // #define DEBUG_SVC_REMOTE_COMM_INCOMING_BUFFER_BAD_DATA

@@ -12,6 +12,15 @@
 // #define HARDWARE_WB6KCN_K3NG         // K3NG test jig - do not use
 // #define HARDWARE_TEST         // K3NG test jig - do not use
 
+#if defined(ESP32)
+  #define A0 32
+  #define A1 33
+  #define A2 34
+  #define A3 35
+  #define A4 36
+  #define A5 38
+  #define A6 39
+#endif
 
 /* Serial port class definitions for various devices
 

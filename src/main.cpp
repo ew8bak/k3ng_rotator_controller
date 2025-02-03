@@ -1115,7 +1115,11 @@
 #define CODE_VERSION "2023.10.06.2200"
 
 
-#include <avr/pgmspace.h>
+#ifdef ARDUINO_ARCH_AVR
+ #include <avr/pgmspace.h>
+#else
+ #include <pgmspace.h>
+#endif
 #include <EEPROM.h>
 #include <math.h>
 
@@ -1472,7 +1476,11 @@ struct config_t {
 #endif // DEBUG_PROFILE_LOOP_TIME
 
 #ifdef FEATURE_AZ_POSITION_PULSE_INPUT
+  #if !defined(ESP32)
   volatile float az_position_pulse_input_azimuth = 0;
+  #else
+  volatile double az_position_pulse_input_azimuth = 0;
+  #endif
   volatile byte last_known_az_state = 0;
 #endif // FEATURE_AZ_POSITION_PULSE_INPUT
 
@@ -1967,6 +1975,8 @@ void service_park();
 void initiate_park();
 
 void deactivate_park();
+
+void az_position_pulse_interrupt_handler();
 
 /* ------------------ let's start doing some stuff now that we got the formalities out of the way --------------------*/
 
@@ -7325,9 +7335,9 @@ void read_settings_from_eeprom(){
     #ifdef DEBUG_EEPROM
       if (debug_mode) {
         debug.println("read_settings_from_eeprom: reading settings from eeprom: ");
-        debug.print("\nconfiguration_struct_version"):
+        debug.print("\nconfiguration_struct_version");
         debug.print(configuration.configuration_struct_version);
-        debug.print("\nconfiguration_struct_subversion"):
+        debug.print("\nconfiguration_struct_subversion");
         debug.print(configuration.configuration_struct_subversion);        
         debug.print("\nanalog_az_full_ccw");
         debug.print(configuration.analog_az_full_ccw);
@@ -9544,7 +9554,7 @@ void output_debug(){
         }
         debug.println(F("DIRTY"));
 
-        #if !defined(TEENSYDUINO)
+        #if !defined(TEENSYDUINO) && !defined(ESP32)
           void * HP = malloc(4);
           if (HP) {free(HP);}
           unsigned long free = (unsigned long)SP - (unsigned long)HP;
@@ -10935,11 +10945,15 @@ void initialize_pins(){
   read_elevation(0);
   #endif // FEATURE_ELEVATION_CONTROL
 
-  #ifdef FEATURE_AZ_POSITION_PULSE_INPUT
+#ifdef FEATURE_AZ_POSITION_PULSE_INPUT
     if (az_position_pulse_pin) {
       pinModeEnhanced(az_position_pulse_pin, INPUT);
       #ifdef OPTION_POSITION_PULSE_INPUT_PULLUPS
+        #if !defined(ESP32)
         digitalWriteEnhanced(az_position_pulse_pin, HIGH);
+        #else
+        pinMode(az_position_pulse_pin, INPUT_PULLUP);
+        #endif
       #endif // OPTION_POSITION_PULSE_INPUT_PULLUPS
     }
   #endif // FEATURE_AZ_POSITION_PULSE_INPUT
@@ -12714,19 +12728,35 @@ void az_position_pulse_interrupt_handler(){
   #endif // DEBUG_POSITION_PULSE_INPUT
 
   if (current_az_state() == ROTATING_CW) {
+    #if !defined(ESP32)
     az_position_pulse_input_azimuth += (float)AZ_POSITION_PULSE_DEG_PER_PULSE;
+    #else
+    az_position_pulse_input_azimuth += (double)AZ_POSITION_PULSE_DEG_PER_PULSE;
+    #endif
     last_known_az_state = ROTATING_CW;
   } else {
     if (current_az_state() == ROTATING_CCW) {
+      #if !defined(ESP32)
       az_position_pulse_input_azimuth -= (float)AZ_POSITION_PULSE_DEG_PER_PULSE;
+      #else
+      az_position_pulse_input_azimuth -= (double)AZ_POSITION_PULSE_DEG_PER_PULSE;
+      #endif
       last_known_az_state = ROTATING_CCW;
     } else {
           #ifndef OPTION_PULSE_IGNORE_AMBIGUOUS_PULSES
       if (last_known_az_state == ROTATING_CW) {
+        #if !defined(ESP32)
         az_position_pulse_input_azimuth += (float)AZ_POSITION_PULSE_DEG_PER_PULSE;
+        #else
+        az_position_pulse_input_azimuth += (double)AZ_POSITION_PULSE_DEG_PER_PULSE;
+        #endif
       } else {
         if (last_known_az_state == ROTATING_CCW) {
+          #if !defined(ESP32)
           az_position_pulse_input_azimuth -= (float)AZ_POSITION_PULSE_DEG_PER_PULSE;
+          #else
+          az_position_pulse_input_azimuth -= (double)AZ_POSITION_PULSE_DEG_PER_PULSE;
+          #endif
         }
       }
             #endif // OPTION_PULSE_IGNORE_AMBIGUOUS_PULSES

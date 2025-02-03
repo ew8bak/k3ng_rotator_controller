@@ -1,4 +1,4 @@
-/* -------------------------------------   Pin Definitions ------------------------------------------
+/* -------------------------------------   Pin Definitions ------------------------------------------ 
 
   You need to look at these and set them appropriately !
 
@@ -10,16 +10,16 @@
 
 /* azimuth pins --------------------- (use just the azimuth pins for an azimuth-only rotator) */
 
-#define rotate_cw 13             // goes high to activate rotator R (CW) rotation - pin 1 on Yaesu connector
-#define rotate_ccw 7             // goes high to activate rotator L (CCW) rotation - pin 2 on Yaesu connector
+#define rotate_cw 0              // goes high to activate rotator R (CW) rotation - pin 1 on Yaesu connector
+#define rotate_ccw 0             // goes high to activate rotator L (CCW) rotation - pin 2 on Yaesu connector
 #define rotate_cw_ccw  0         // goes high for both CW and CCW rotation
-#define rotate_cw_pwm 0          // optional - PWM CW output - set to 0 to disable (must be PWM capable pin)
-#define rotate_ccw_pwm 0         // optional - PWM CCW output - set to 0 to disable (must be PWM capable pin)
-#define rotate_cw_ccw_pwm 6      // optional - PWM on CW and CCW output - set to 0 to disable (must be PWM capable pin)
+#define rotate_cw_pwm 14          // optional - PWM CW output - set to 0 to disable (must be PWM capable pin)
+#define rotate_ccw_pwm 27         // optional - PWM CCW output - set to 0 to disable (must be PWM capable pin)
+#define rotate_cw_ccw_pwm 0      // optional - PWM on CW and CCW output - set to 0 to disable (must be PWM capable pin)
 #define rotate_cw_freq 0         // optional - CW variable frequency output
 #define rotate_ccw_freq 0        // optional - CCW variable frequency output
-#define button_cw A2             // normally open button to ground for manual CW rotation (schematic pin: A2)
-#define button_ccw A3            // normally open button to ground for manual CCW rotation (schematic pin: A3)
+#define button_cw 0              // normally open button to ground for manual CW rotation (schematic pin: A2)
+#define button_ccw 0             // normally open button to ground for manual CCW rotation (schematic pin: A3)
 #define serial_led 0             // LED blinks when command is received on serial port (set to 0 to disable)
 #define rotator_analog_az A0     // reads analog azimuth voltage from rotator - pin 4 on Yaesu connector
 #define azimuth_speed_voltage 0  // optional - PWM output for speed control voltage feed into rotator (on continually unlike rotate_cw_pwm and rotate_ccw_pwm)
@@ -27,7 +27,7 @@
 #define brake_az 0               // goes high to disengage azimuth brake (set to 0 to disable)
 #define az_speed_pot 0           // connect to wiper of 1K to 10K potentiometer for speed control (set to 0 to disable)
 #define az_preset_pot 0          // connect to wiper of 1K to 10K potentiometer for preset control (set to 0 to disable)
-#define preset_start_button 10    // connect to momentary switch (ground on button press) for preset start (set to 0 to disable or for preset automatic start)
+#define preset_start_button 0    // connect to momentary switch (ground on button press) for preset start (set to 0 to disable or for preset automatic start)
 #define button_stop 0            // connect to momentary switch (ground on button press) for preset stop (set to 0 to disable or for preset automatic start)
 #define rotation_indication_pin 0
 #define blink_led 0
@@ -57,8 +57,8 @@
 
 // rotary encoder pins and options
 #ifdef FEATURE_AZ_PRESET_ENCODER 
-  #define az_rotary_preset_pin1 8                      // CW Encoder Pin
-  #define az_rotary_preset_pin2 9                      // CCW Encoder Pin
+  #define az_rotary_preset_pin1 0                     // CW Encoder Pin
+  #define az_rotary_preset_pin2 0                     // CCW Encoder Pin
 #endif //FEATURE_AZ_PRESET_ENCODER
 
 #ifdef FEATURE_EL_PRESET_ENCODER 
@@ -77,8 +77,8 @@
 #endif //FEATURE_EL_POSITION_ROTARY_ENCODER
 
 #ifdef FEATURE_AZ_POSITION_PULSE_INPUT
-  #define az_position_pulse_pin 0                       // must be an interrupt capable pin!
-  #define AZ_POSITION_PULSE_PIN_INTERRUPT 0             // Uno: pin 2 = interrupt 0, pin 3 = interrupt 1 ; Mega: pin 2 = interrupt 0, pin 3 = interrupt 1, pin 21 = interrupt 2, pin 20 = interrupt 3, pin 19 = interrupt 4, pin 18 = interrupt 5
+  #define az_position_pulse_pin 18                       // must be an interrupt capable pin!
+  #define AZ_POSITION_PULSE_PIN_INTERRUPT 18             // Uno: pin 2 = interrupt 0, pin 3 = interrupt 1 ; Mega: pin 2 = interrupt 0, pin 3 = interrupt 1, pin 21 = interrupt 2, pin 20 = interrupt 3, pin 19 = interrupt 4, pin 18 = interrupt 5
 #endif                                                // read http://arduino.cc/en/Reference/AttachInterrupt for details on hardware and interrupts
 
 #ifdef FEATURE_EL_POSITION_PULSE_INPUT
@@ -91,12 +91,12 @@
 #endif
 
 //classic 4 bit LCD pins
-#define lcd_4_bit_rs_pin 12
-#define lcd_4_bit_enable_pin 11
+#define lcd_4_bit_rs_pin 22
+#define lcd_4_bit_enable_pin 23
 #define lcd_4_bit_d4_pin 5
-#define lcd_4_bit_d5_pin 4
-#define lcd_4_bit_d6_pin 3
-#define lcd_4_bit_d7_pin 2
+#define lcd_4_bit_d5_pin 25
+#define lcd_4_bit_d6_pin 26
+#define lcd_4_bit_d7_pin 27
 
 
 #ifdef FEATURE_JOYSTICK_CONTROL
@@ -235,4 +235,3 @@
 #define satellite_tracking_active_pin 0
 #define satellite_tracking_activate_line 0
 #define satellite_tracking_button 0        // use with a normally open momentary switch to ground
-

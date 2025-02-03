@@ -43,13 +43,13 @@
 // #define FEATURE_MASTER_SEND_AZ_ROTATION_COMMANDS_TO_REMOTE
 // #define FEATURE_MASTER_SEND_EL_ROTATION_COMMANDS_TO_REMOTE
 
-//#define FEATURE_ADC_RESOLUTION12   // 12 bit ADC resolution for Teensy 3.x, Arduino Due Zero MKR families 
+// #define FEATURE_ADC_RESOLUTION12   // 12 bit ADC resolution for Teensy 3.x, Arduino Due Zero MKR families 
 
 /* position sensors - pick one for azimuth and one for elevation if using an az/el rotator */
-#define FEATURE_AZ_POSITION_POTENTIOMETER   //this is used for both a voltage from a rotator control or a homebrew rotator with a potentiometer
-//#define FEATURE_AZ_POSITION_ROTARY_ENCODER
+// #define FEATURE_AZ_POSITION_POTENTIOMETER   //this is used for both a voltage from a rotator control or a homebrew rotator with a potentiometer
+// #define FEATURE_AZ_POSITION_ROTARY_ENCODER
 // #define FEATURE_AZ_POSITION_ROTARY_ENCODER_USE_PJRC_LIBRARY  // library @ http://www.pjrc.com/teensy/td_libs_Encoder.html  
-// #define FEATURE_AZ_POSITION_PULSE_INPUT
+#define FEATURE_AZ_POSITION_PULSE_INPUT
 // #define FEATURE_AZ_POSITION_HMC5883L            // HMC5883L digital compass support
 // #define FEATURE_AZ_POSITION_HMC5883L_USING_JARZEBSKI_LIBRARY            // HMC5883L digital compass support using Jarzebski library at https://github.com/jarzebski/Arduino-HMC5883L  
 // #define FEATURE_AZ_POSITION_DFROBOT_QMC5883            // QMC5883 digital compass support using DFRobot library at https://github.com/DFRobot/DFRobot_QMC5883
@@ -78,7 +78,7 @@
 // #define FEATURE_EL_POSITION_A2_ABSOLUTE_ENCODER
    
 // And if you are using any display other than a 4 bit LCD, you must also change the feature setting in rotator_k3ngdisplay.h!!!!
-#define FEATURE_4_BIT_LCD_DISPLAY // Uncomment for classic 4 bit LCD display (most common)
+// #define FEATURE_4_BIT_LCD_DISPLAY // Uncomment for classic 4 bit LCD display (most common)
 // #define FEATURE_ADAFRUIT_I2C_LCD
 // #define FEATURE_ADAFRUIT_BUTTONS  // Uncomment this to use Adafruit I2C LCD buttons for manual AZ/EL instead of normal buttons (also set this feature in rotator_k3ngdisplay.h)
 // #define FEATURE_YOURDUINO_I2C_LCD
@@ -98,7 +98,7 @@
 // #define FEATURE_AUDIBLE_ALERT
 
 /* preset rotary encoder features and options */
-#define FEATURE_AZ_PRESET_ENCODER            // Uncomment for Rotary Encoder Azimuth Preset support
+// #define FEATURE_AZ_PRESET_ENCODER            // Uncomment for Rotary Encoder Azimuth Preset support
 // #define FEATURE_EL_PRESET_ENCODER            // Uncomment for Rotary Encoder Elevation Preset support (requires FEATURE_AZ_PRESET_ENCODER above)
 #define OPTION_ENCODER_HALF_STEP_MODE
 #define OPTION_ENCODER_ENABLE_PULLUPS          // define to enable weak pullups on rotary encoder pins
@@ -118,8 +118,8 @@
 // #define FEATURE_ROTATION_INDICATOR_PIN     // activate rotation_indication_pin to indicate rotation
 // #define FEATURE_LIMIT_SENSE
 // #define FEATURE_TIMED_BUFFER           // Support for Yaesu timed buffer commands
-// #define OPTION_SERIAL_HELP_TEXT        // Yaesu help command prints help
-#define FEATURE_PARK
+#define OPTION_SERIAL_HELP_TEXT        // Yaesu help command prints help
+// #define FEATURE_PARK
 // #define FEATURE_AUTOPARK               // Requires FEATURE_PARK
 // #define OPTION_AZ_MANUAL_ROTATE_LIMITS    // this option will automatically stop the L and R commands when hitting a CCW or CW limit (settings are AZ_MANUAL_ROTATE_CCW_LIMIT, AZ_MANUAL_ROTATE_CW_LIMIT) 
 // #define OPTION_EL_MANUAL_ROTATE_LIMITS    // (settings are EL_MANUAL_ROTATE_DOWN_LIMIT, EL_MANUAL_ROTATE_UP_LIMIT)
@@ -142,20 +142,20 @@
 #define OPTION_DISPLAY_STATUS
 #define OPTION_DISPLAY_HEADING
 #define OPTION_DISPLAY_HEADING_AZ_ONLY
-//#define OPTION_DISPLAY_HEADING_EL_ONLY
+#define OPTION_DISPLAY_HEADING_EL_ONLY
 #define OPTION_DISPLAY_HHMM_CLOCK  // display HH:MM clock  (set position with #define LCD_HHMM_CLOCK_POSITION)
 // #define OPTION_DISPLAY_HHMMSS_CLOCK  // display HH:MM:SS clock  (set position with #define LCD_HHMMSS_CLOCK_POSITION)
 // #define OPTION_DISPLAY_ALT_HHMM_CLOCK_AND_MAIDENHEAD // display alternating HH:MM clock and maidenhead on LCD row 1 (set position with #define LCD_HHMMCLOCK_POSITION)
 // #define OPTION_DISPLAY_CONSTANT_HHMMSS_CLOCK_AND_MAIDENHEAD // display constant HH:MM:SS clock and maidenhead on LCD row 1 (set position with #define LCD_CONSTANT_HHMMSSCLOCK_MAIDENHEAD_POSITION)
 // #define OPTION_DISPLAY_BIG_CLOCK   // display date & time clock (set row with #define LCD_BIG_CLOCK_ROW)
 // #define OPTION_CLOCK_ALWAYS_HAVE_HOUR_LEADING_ZERO
-//#define OPTION_DISPLAY_GPS_INDICATOR  // display GPS indicator on LCD - set position with LCD_GPS_INDICATOR_POSITION and LCD_GPS_INDICATOR_ROW
-#define OPTION_DISPLAY_DIRECTION_STATUS                         // LCD N, W, E, S, NW, etc. direction indicator
+#define OPTION_DISPLAY_GPS_INDICATOR  // display GPS indicator on LCD - set position with LCD_GPS_INDICATOR_POSITION and LCD_GPS_INDICATOR_ROW
+// #define OPTION_DISPLAY_DIRECTION_STATUS                         // LCD N, W, E, S, NW, etc. direction indicator
 // #define OPTION_DISPLAY_MOON_TRACKING_CONTINUOUSLY               // LCD
 // #define OPTION_DISPLAY_SATELLITE_TRACKING_CONTINUOUSLY          // LCD
 // #define OPTION_DISPLAY_SATELLITE_TRACKING_ALTERNATING           // LCD
 // #define OPTION_DISPLAY_SUN_TRACKING_CONTINUOUSLY                // LCD
-// #define OPTION_DISPLAY_MOON_OR_SUN_OR_SAT_TRACKING_CONDITIONAL  // LCD
+#define OPTION_DISPLAY_MOON_OR_SUN_OR_SAT_TRACKING_CONDITIONAL  // LCD
 #define OPTION_DISPLAY_VERSION_ON_STARTUP  //code provided by Paolo, IT9IPQ
 // #define OPTION_LCD_HEADING_FIELD_FIXED_DECIMAL_PLACE
 // #define OPTION_REVERSE_AZ_HH12_AS5045
@@ -170,7 +170,7 @@
 // #define OPTION_HAMLIB_EASYCOM_NO_TERMINATOR_CHARACTER_HACK
 // #define OPTION_NO_ELEVATION_CHECK_TARGET_DELAY
 // #define OPTION_BLINK_OVERLAP_LED
-// #define OPTION_EL_PULSE_DEBOUNCE
+#define OPTION_EL_PULSE_DEBOUNCE
 // #define OPTION_SCANCON_2RMHF3600_INC_ENCODER  // use with FEATURE_AZ_POSITION_INCREMENTAL_ENCODER and/or FEATURE_EL_POSITION_INCREMENTAL_ENCODER if using the ScanCon 2RMHF3600 incremental encoder
 // #define OPTION_RESET_METHOD_JMP_ASM_0
 // #define OPTION_SAVE_MEMORY_EXCLUDE_EXTENDED_COMMANDS

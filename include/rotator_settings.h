@@ -1,7 +1,7 @@
 
 /* -------------------------- rotation settings ---------------------------------------*/
 
-#define AZIMUTH_STARTING_POINT_EEPROM_INITIALIZE 0      // the starting point in degrees of the azimuthal rotator - only used for initializing EEPROM the first time the code is run
+#define AZIMUTH_STARTING_POINT_EEPROM_INITIALIZE 180      // the starting point in degrees of the azimuthal rotator - only used for initializing EEPROM the first time the code is run                                               
 #define AZIMUTH_ROTATION_CAPABILITY_EEPROM_INITIALIZE 450 // the default rotation capability of the rotator in degrees - only used for initializing EEPROM the first time the code is run
 
 /* 
@@ -35,7 +35,7 @@ You can tweak these, but read the online documentation!
 #define ANALOG_EL_FULL_DOWN_EEPROM_INITIALIZE 1
 #define ANALOG_EL_FULL_UP_EEPROM_INITIALIZE 1023
 
-#define ANALOG_AZ_OVERLAP_DEGREES 360         // if overlap_led above is enabled, turn on overlap led line if azimuth is greater than this setting
+#define ANALOG_AZ_OVERLAP_DEGREES 540         // if overlap_led above is enabled, turn on overlap led line if azimuth is greater than this setting
                                               // you must use raw azimuth (if the azimuth on the rotator crosses over to 0 degrees, add 360
                                               // for example, on a Yaesu 450 degree rotator with a starting point of 180 degrees, and an overlap LED
                                               // turning on when going CW and crossing 180, ANALOG_AZ_OVERLAP_DEGREES should be set for 540 (180 + 360)
@@ -51,8 +51,8 @@ You can tweak these, but read the online documentation!
 
 //AZ
 #define AZ_SLOWSTART_DEFAULT 1            // 0 = off ; 1 = on
-#define AZ_SLOWDOWN_DEFAULT 1             // 0 = off ; 1 = on
-#define AZ_SLOW_START_UP_TIME 500         // if slow start is enabled, the unit will ramp up speed for this many milliseconds
+#define AZ_SLOWDOWN_DEFAULT 1            // 0 = off ; 1 = on
+#define AZ_SLOW_START_UP_TIME 2000        // if slow start is enabled, the unit will ramp up speed for this many milliseconds
 #define AZ_SLOW_START_STARTING_PWM 1      // PWM starting value for slow start (must be < 256)
 #define AZ_SLOW_START_STEPS 20            // must be < 256
 
@@ -117,7 +117,7 @@ You can tweak these, but read the online documentation!
 
 #define LCD_COLUMNS 20 //16
 #define LCD_ROWS 4 //2       // this is automatically set below for HARDWARE_EA4TX_ARS_USB and HARDWARE_M0UPU
-#define LCD_UPDATE_TIME 100           // LCD update time in milliseconds
+#define LCD_UPDATE_TIME 1000           // LCD update time in milliseconds
 #define LCD_HHMM_CLOCK_POSITION LEFT          //LEFT or RIGHT
 #define LCD_HHMMSS_CLOCK_POSITION LEFT          //LEFT or RIGHT
 #define LCD_ALT_HHMM_CLOCK_AND_MAIDENHEAD_POSITION LEFT
@@ -133,17 +133,17 @@ You can tweak these, but read the online documentation!
 #define LCD_SUN_TRACKING_UPDATE_INTERVAL 5000
 #define LCD_MOON_OR_SUN_OR_SAT_TRACKING_CONDITIONAL_ROW 3                // LCD display row for OPTION_DISPLAY_MOON_OR_SUN_OR_SAT_TRACKING_CONDITIONAL
 #define SPLASH_SCREEN_TIME 3000
-#define LCD_PERIODIC_REDRAW_TIME_SECS 30      // set to 0 to totally disable periodically redrawing the screen
-#define LCD_CLEAR_BEFORE_REDRAW 0            // set to 0 to disable doing a clear before redraw
-#define LCD_REDRAW_UPON_COMMANDS 1           // set to 1 to enable screen redraws upon commands and button presses
+#define LCD_PERIODIC_REDRAW_TIME_SECS 0      // set to 0 to totally disable periodically redrawing the screen
+#define LCD_CLEAR_BEFORE_REDRAW 1            // set to 0 to disable doing a clear before redraw
+#define LCD_REDRAW_UPON_COMMANDS 0           // set to 1 to enable screen redraws upon commands and button presses
 
 #define LCD_HEADING_ROW 2
 #define LCD_HEADING_FIELD_SIZE 20
-#define LCD_AZ_ONLY_HEADING_ROW 4
+#define LCD_AZ_ONLY_HEADING_ROW 1
 #define LCD_AZ_ONLY_HEADING_FIELD_SIZE 20
 #define LCD_EL_ONLY_HEADING_ROW 2
 #define LCD_EL_ONLY_HEADING_FIELD_SIZE 20
-#define LCD_STATUS_ROW 3
+#define LCD_STATUS_ROW 1
 #define LCD_STATUS_FIELD_SIZE 20
 #define LCD_DIRECTION_ROW 1
 #define LCD_HHMMSS_CLOCK_ROW 1
@@ -163,7 +163,7 @@ You can tweak these, but read the online documentation!
 #define AZ_POSITION_ROTARY_ENCODER_DEG_PER_PULSE 0.5
 #define EL_POSITION_ROTARY_ENCODER_DEG_PER_PULSE 0.5
 
-#define AZ_POSITION_PULSE_DEG_PER_PULSE 0.5
+#define AZ_POSITION_PULSE_DEG_PER_PULSE 0.02
 #define EL_POSITION_PULSE_DEG_PER_PULSE 0.5
 
 #define NOT_PARKED_DETECT_TIME_MS 1000
@@ -389,5 +389,3 @@ You can tweak these, but read the online documentation!
 #define SATELLITE_CALC_STAGE_3_RESOLUTION_SECS 1
 
 #define NEXTION_GSC_STARTUP_DELAY 0
-
-
